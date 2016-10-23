@@ -150,7 +150,7 @@ DOMDisplay.prototype.scrollPlayerIntoView = function() {
     this.wrap.scrollTop = center.y + margin - height;
 };
 
-level.prototype.obstacleAt = function.(pos,size){
+Level.prototype.obstacleAt = function(pos,size){
   var xStart = Math.floor(pos.x);
   var xEnd = Math.ceil(pos.x+size.x);
   var yStart= Math.floor(pos.y);
@@ -282,7 +282,7 @@ function runLevel(level, Display) {
 
   runAnimation(function(step) {
     // Allow the viewer to scroll the level
-    level.animate(step, arrows);
+    level.animate(step,arrows);
     display.drawFrame(step);
   });
 }
