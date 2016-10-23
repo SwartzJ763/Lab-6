@@ -184,7 +184,7 @@ Level.prototype.animate = function(step, keys) {
 
 var maxStep = 0.05;
 
-var playerXSpeed = 7;
+var playerXSpeed = 12;
 
 Player.prototype.moveX = function(step, level, keys) {
   this.speed.x = 0;
@@ -194,14 +194,18 @@ Player.prototype.moveX = function(step, level, keys) {
   var motion = new Vector(this.speed.x * step, 0);
   var newPos = this.pos.plus(motion);
   var obstacle= level.obstacleAt(newPos, this.size);
+  //if(obstacle == 'lava'){
+    //newPos = Vector(10,10);
+    //this.pos=newPos;
+  //}
   if(obstacle!='wall'){
   this.pos = newPos;
   }
 };
 
-var gravity = 30;
-var jumpSpeed = 17;
-var playerYSpeed = 7;
+var gravity = 45;
+var jumpSpeed = 22;
+var playerYSpeed = 10;
 
 Player.prototype.moveY = function(step, level, keys) {
   this.speed.y += step*gravity;
@@ -213,9 +217,14 @@ Player.prototype.moveY = function(step, level, keys) {
       this.speed.y= -jumpSpeed;
     else
       this.speed.y=0;
-  }  
-  else{
+   if(obstacle == 'lava'){
 
+    newPos = new Vector(5,5);
+     this.pos=newPos; 
+   }
+  } 
+
+  else{
   this.pos = newPos;
   }
 };
